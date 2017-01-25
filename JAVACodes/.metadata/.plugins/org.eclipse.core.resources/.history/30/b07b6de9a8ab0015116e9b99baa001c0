@@ -1,0 +1,28 @@
+
+public class Line_Counter {
+	
+	public static void main(String a[]){
+		 	int input;
+		    int linecount = 0;
+		    int charcount = 0;
+
+		    while ((input = getchar()) != EOF) {
+
+		        if (input == ' ') {
+		        }
+		        else if (input == '\n') {
+		            if (charcount > 3) {
+		               linecount++;
+		            }
+		            charcount = 0;
+		        }
+		        else {
+		            charcount++;
+		        }
+		    }
+
+		    printf("%d\n", linecount);
+
+	}
+
+}

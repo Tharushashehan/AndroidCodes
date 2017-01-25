@@ -1,0 +1,71 @@
+-- VERSION_3
+-- START DISKCACHE
+C:\Users\Tharusha Shehan\Documents\JAVA codes\.metadata\.plugins\org.eclipse.core.resources\.projects\TestDjango\com.python.pydev.analysis\v1_indexcache
+.v1_indexcache
+TestDjango.home.views|0|C:\Users\Tharusha Shehan\Documents\JAVA codes\TestDjango\TestDjango\home\views.py
+TestDjango.home.tests|0|C:\Users\Tharusha Shehan\Documents\JAVA codes\TestDjango\TestDjango\home\tests.py
+TestDjango.wsgi|0|C:\Users\Tharusha Shehan\Documents\JAVA codes\TestDjango\TestDjango\wsgi.py
+TestDjango.settings|0|C:\Users\Tharusha Shehan\Documents\JAVA codes\TestDjango\TestDjango\settings.py
+TestDjango.__init__|0|C:\Users\Tharusha Shehan\Documents\JAVA codes\TestDjango\TestDjango\__init__.py
+TestDjango.home.models|0|C:\Users\Tharusha Shehan\Documents\JAVA codes\TestDjango\TestDjango\home\models.py
+TestDjango.settings.local.template|0|C:\Users\Tharusha Shehan\Documents\JAVA codes\TestDjango\TestDjango\settings\local.template.py
+TestDjango.urls|0|C:\Users\Tharusha Shehan\Documents\JAVA codes\TestDjango\TestDjango\urls.py
+TestDjango.home.__init__|0|C:\Users\Tharusha Shehan\Documents\JAVA codes\TestDjango\TestDjango\home\__init__.py
+TestDjango.settings.default|0|C:\Users\Tharusha Shehan\Documents\JAVA codes\TestDjango\TestDjango\settings\default.py
+TestDjango.settings.__init__|0|C:\Users\Tharusha Shehan\Documents\JAVA codes\TestDjango\TestDjango\settings\__init__.py
+manage|0|C:\Users\Tharusha Shehan\Documents\JAVA codes\TestDjango\manage.py
+-- END DISKCACHE
+-- START DICTIONARY
+10
+5=TestDjango.home.views
+6=TestDjango.home.tests
+3=TestDjango.wsgi
+2=TestDjango.settings
+9=HomeView
+8=WildcardNetwork
+4=TestDjango.settings.local.template
+7=TestDjango.urls
+10=SimpleTest
+1=TestDjango.settings.default
+-- END DICTIONARY
+-- START TREE 1
+31
+abs|2|ABS_TEMPLATES_PATH!11@ABS_PROJECT_ROOT!11@
+adm|2|ADMIN_TOOLS!11@ADMINS!11@
+all|2|ALLOWED_HOSTS!19@ALLOWED_HOSTS!11@
+app|1|application!27@
+aut|1|AUTH_PASSWORD_VALIDATORS!19@
+bas|1|BASE_DIR!19@
+com|1|COMPRESS_ENABLED!35@
+dat|3|DATABASES!11@DATABASES!35@DATABASES!19@
+deb|3|DEBUG!19@DEBUG!11@DEBUG!35@
+dja|1|DJANGO_APPS!11@
+ext|1|EXTERNAL_APPS!11@
+hom|1|HomeView!41@
+ins|2|INSTALLED_APPS!11@INSTALLED_APPS!19@
+int|1|INTERNAL_IPS!35@
+lan|2|LANGUAGE_CODE!19@LANGUAGE_CODE!11@
+loc|1|LOCAL_APPS!11@
+log|1|LOGGING!11@
+man|1|MANAGERS!11@
+med|3|MEDIA_ROOT!11@MEDIA_URL!11@MEDIA_URL!35@
+mid|2|MIDDLEWARE_CLASSES!19@MIDDLEWARE_CLASSES!11@
+roo|2|ROOT_URLCONF!11@ROOT_URLCONF!19@
+sec|2|SECRET_KEY!11@SECRET_KEY!19@
+sim|1|SimpleTest!49@
+sit|1|SITE_ID!11@
+sta|6|STATIC_URL!35@STATIC_URL!11@STATIC_URL!19@STATICFILES_DIRS!11@STATICFILES_FINDERS!11@STATIC_ROOT!11@
+tem|4|TEMPLATE_DEBUG!35@TEMPLATE_DEBUG!11@TEMPLATES!11@TEMPLATES!19@
+tim|2|TIME_ZONE!19@TIME_ZONE!11@
+url|1|urlpatterns!59@
+use|6|USE_I18N!11@USE_L10N!11@USE_TZ!11@USE_I18N!19@USE_TZ!19@USE_L10N!19@
+wil|1|WildcardNetwork!33@
+wsg|2|WSGI_APPLICATION!19@WSGI_APPLICATION!11@
+-- END TREE
+-- START TREE 2
+4
+__c|1|__contains__!8&34@
+get|1|get!9&42@
+tem|1|template_name!9&43@
+tes|1|test_basic_addition!10&50@
+-- END TREE

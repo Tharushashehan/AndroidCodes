@@ -1,0 +1,22 @@
+
+public class Test3 {
+
+	public static void main(String a[]){
+		for(int x=1;x<10;x=x+2){
+			
+				int i=1;
+			
+			for(int y=10;y>x;y=y-2){
+				System.out.print(" ");
+					}
+			
+			for(int y=0;y<x;y++){
+				System.out.print(i);
+					}
+
+			System.out.println(" ");
+			
+				i++;
+		}
+	}
+}

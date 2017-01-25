@@ -1,0 +1,51 @@
+package LabSheet;
+
+import java.util.Scanner;
+class Test09{
+	public static void main (String[] args) {
+		
+		
+			for (char ch = 'A'; ch <='Z'; ch++) {
+			System.out.print(ch + " ");
+			}
+			System.out.println(" ");
+			
+			for (int i = 1, j= 5; i <=j; i++,j--) {
+				System.out.println("Loop - " +i + ": i=" +i + " j = " + j );
+				}
+			for (int i = 1; i <=10; i++) {
+				System.out.println("Loop - " +i);
+				if (i==5) {
+				break;
+				}
+		
+		Scanner scan = new Scanner (System.in);
+		System.out.print ("Enter day of the week : ");
+		int day = scan.nextInt();
+		switch (day){
+		case 1:
+			System.out.println("Today is Sunday");
+			break;
+		case 2:
+			System.out.println("Today is Monday");
+			break;
+		case 3:	
+			System.out.println("Today is Tuesday");
+			break;	
+		case 4:
+			System.out.println("Today is Wednesday");
+			break;
+		case 5:
+			System.out.println("Today is Thursday");
+			break;
+		case 6:
+			System.out.println("Today is Friday");
+			break;
+		case 7:
+			System.out.println("Today is Saturday");
+			break;
+		default :
+			System.out.println("Wrong entry!");
+		}
+	}
+}

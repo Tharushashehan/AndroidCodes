@@ -1,0 +1,10 @@
+package LabSheet;
+
+public class Test14 {
+	public static void main(String a[]){
+		Byte b = new Byte();
+		System.out.println(b.MAX_VALUE);
+		System.out.println(b.MIN_VALUE);
+	}
+
+}

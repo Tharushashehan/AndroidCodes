@@ -1,0 +1,21 @@
+MODULES_MANAGER_V2
+Mysite.__init__|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\Mysite\__init__.py
+Mysite.settings|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\Mysite\settings.py
+Mysite.urls|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\Mysite\urls.py
+Mysite.wsgi|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\Mysite\wsgi.py
+appTest.__init__|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\appTest\__init__.py
+appTest.admin|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\appTest\admin.py
+appTest.apps|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\appTest\apps.py
+appTest.models|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\appTest\models.py
+appTest.tests|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\appTest\tests.py
+appTest.urls|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\appTest\urls.py
+appTest.views|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\appTest\views.py
+manage|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\manage.py
+polls.__init__|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\polls\__init__.py
+polls.admin|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\polls\admin.py
+polls.apps|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\polls\apps.py
+polls.migrations.__init__|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\polls\migrations\__init__.py
+polls.models|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\polls\models.py
+polls.tests|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\polls\tests.py
+polls.urls|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\polls\urls.py
+polls.views|C:\Users\Tharusha Shehan\Documents\JAVA codes\Mysite\polls\views.py

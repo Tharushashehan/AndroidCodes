@@ -1,0 +1,8 @@
+package LabSheet;
+
+public class Test11 {
+	public static void main(String a[]){
+		System.out.println("Beeping"+'\007');
+	}
+
+}

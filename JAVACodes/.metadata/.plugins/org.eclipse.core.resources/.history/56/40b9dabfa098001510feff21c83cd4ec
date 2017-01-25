@@ -1,0 +1,23 @@
+package LabSheet;
+
+public class Test13 {
+	
+	public static void main(String a[]){
+		Test13 s1 =new Test13();
+		Test13 s2 =new Test13();
+		Integer x= Integer.valueOf(5);
+		Integer y= Integer.valueOf(5);
+		
+		
+		System.out.println(s2.equals(s1));
+		System.out.println(x.equals(y));
+		System.out.println(x==y);
+		System.out.println(s2=s1);
+		
+		Byte p=new Byte(111);
+		System.out.println(p);
+		byteValue(p);
+		System.out.println(p);
+	}
+
+}

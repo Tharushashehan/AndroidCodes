@@ -1,0 +1,14 @@
+
+public class Test4 {
+
+	public static void main(String a[]){
+		hello h = new hello();
+		hello h2 = new hello();
+	}
+}
+
+class hello{
+	void m(){
+		System.out.println("hello world");
+	}
+}
