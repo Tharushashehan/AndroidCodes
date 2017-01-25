@@ -1,0 +1,9 @@
+final Intent intnt = new Intent(getApplicationContext(),iterviewPerson.class);//dan inna activity eka.....
+
+        btnInterviewRecordBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),secondActivity.class));//next activity needs to start is second activity.
+                finish();
+            }
+        });

@@ -1,0 +1,120 @@
+package com.example.tharushashehan.ermsapp04;
+
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.example.tharushashehan.ermsapp04.resourceClasses.ConnectionHelper;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+
+public class InterviewRecord extends ActionBarActivity {
+
+//mulinma mekata adala XML file eke hadanna list view ekak eke nama dila eta passe me tika karan yanna....
+//mama json object aran display karanne.... 
+
+    private ListView lstInterviewRecord;
+    private String interview;
+    String url="http://www.mocky.io/v2/576ef473100000df341f4c6d";
+
+    ArrayList<String> person =new ArrayList<String>();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_interview_record);
+
+        Bundle bndle = getIntent().getExtras();
+        if (getIntent().getStringExtra("return") != null) {
+            interview = bndle.getString("return");
+        }
+
+//List item ekaka click kalama anikata yana eka me.....
+
+        lstInterviewRecord.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Bundle bndle = new Bundle();
+                bndle.putString("return", person.get(position));
+                intnt.putExtras(bndle);
+                startActivity(intnt);
+                finish();
+            }
+        });
+        new toservice().execute("");
+    }
+
+    private class toservice extends AsyncTask<String,String,String>{
+        ProgressDialog pDialog = new ProgressDialog(InterviewRecord.this);
+        JSONObject job = new JSONObject();
+        private ArrayAdapter arrayAdapter;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog.setMessage("Loading Data. Please wait...");
+            pDialog.setIndeterminate(false);
+            //pDialog.setCancelable(false);
+            pDialog.show();
+            pDialog.setCanceledOnTouchOutside(true);
+        }
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                job.put("interview", interview);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            String content = "Wrong";
+            try {
+                content = ConnectionHelper.post(job, url);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return content;
+        }
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            JSONArray jArray = null;
+            try {
+                jArray = new JSONArray(s);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            for (int i = 0; i < jArray.length(); i++) {
+                JSONObject jObj = null;
+                try {
+                    jObj = jArray.getJSONObject(i);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    person.add(i, jObj.getString("person"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Log.e("magulama tama",person.toString());
+                arrayAdapter = new ArrayAdapter(InterviewRecord.this, android.R.layout.simple_list_item_1, person);
+                lstInterviewRecord.setAdapter(arrayAdapter);
+                pDialog.dismiss();
+            }
+        }
+    }

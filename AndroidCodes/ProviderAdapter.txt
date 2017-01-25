@@ -1,0 +1,64 @@
+ProviderAdapter.java-----------------------------------------------------------------------------
+
+package com.altavista.dc.serviceprovider.Adapter;
+
+import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+import com.altavista.dc.serviceprovider.R;
+import com.altavista.dc.serviceprovider.model.Providers;
+
+import java.util.ArrayList;
+
+
+public class ProvidersAdapter extends BaseAdapter {
+    Activity activity;
+    ArrayList<Providers> providerList;
+    private LayoutInflater inflater;
+
+    public ProvidersAdapter(Activity activity,ArrayList<Providers> providers) {
+        this.activity=activity;
+        this.providerList=providers;
+        this.inflater = (LayoutInflater) this.activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+
+    @Override
+    public int getCount() {
+        return providerList.size();
+    }
+
+    @Override
+    public Providers getItem(int position) {
+        return providerList.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View view = null;
+        view = inflater.inflate(R.layout.provider_list_row_item, parent,false);
+
+        Providers p=providerList.get(position);
+
+        TextView name=(TextView)view.findViewById(R.id.name);
+        TextView address=(TextView)view.findViewById(R.id.address);
+        TextView other=(TextView)view.findViewById(R.id.other);
+
+
+        name.setText(p.getName());
+        address.setText(p.getAddress());
+        other.setText(p.getOther());
+
+        return view;
+    }
+}

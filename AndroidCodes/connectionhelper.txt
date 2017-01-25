@@ -1,0 +1,474 @@
+package com.altavista.dc.serviceprovider;
+
+import android.app.Activity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+
+
+public class ConnectionHelper {
+
+    public static String post(JSONObject json, String url) throws IOException, JSONException {
+
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+        //add request header
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-Type", "application/json");
+
+
+
+        // Send post request
+        con.setDoOutput(true);
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(json.toString());
+        wr.flush();
+        wr.close();
+
+        if (con.getResponseCode() == 200) {
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            return response.toString();
+
+        } else {
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("response", con.getResponseCode());
+            jsonObject.put("message", "error");
+
+
+            return jsonObject.toString();
+        }
+
+
+    }
+/* commented becoz commonvariable is not yet initialized in CMS
+    public static String postWithToken(JSONObject json, String url,Activity activity) throws IOException, NullPointerException,JSONException {
+
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+        CommonVariable commonVariable = (CommonVariable)activity.getApplication();
+
+        //add request header
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-Type", "application/json");
+        con.setRequestProperty("Jauthtoken", commonVariable.getAuthenticateToken());
+        con.setRequestProperty("Jaccesstoken", commonVariable.getAccessToken());
+
+
+
+        // Send post request
+        con.setDoOutput(true);
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(json.toString());
+        wr.flush();
+        wr.close();
+
+        if (con.getResponseCode() == 200) {
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            return response.toString();
+
+        } else {
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("response", con.getResponseCode());
+            jsonObject.put("message", "error");
+
+
+            return jsonObject.toString();
+        }
+
+
+    }
+*/
+    public static String get(String url) throws IOException,JSONException {
+
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+        //add request header
+        con.setRequestMethod("GET");
+        con.setRequestProperty("Content-Type", "application/json");
+        con.setRequestProperty("Accept", "application/json");
+
+        int responseCode = con.getResponseCode();
+
+        if(con.getResponseCode()==200){
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            return response.toString();
+
+        }else{
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("response", con.getResponseCode());
+            jsonObject.put("message", "error");
+
+
+            return jsonObject.toString();
+
+        }
+
+
+
+    }
+/* commented becoz common variable is not yet initialized
+    public static String getWithToken(String url,Activity activity) throws IOException,JSONException {
+
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+        CommonVariable commonVariable = (CommonVariable)activity.getApplication();
+
+        //add request header
+        con.setRequestMethod("GET");
+        con.setRequestProperty("Content-Type", "application/json");
+        con.setRequestProperty("Accept", "application/json");
+        con.setRequestProperty("jauthtoken", commonVariable.getAuthenticateToken());
+        con.setRequestProperty("jaccesstoken", commonVariable.getAccessToken());
+
+        int responseCode = con.getResponseCode();
+
+        if(con.getResponseCode()==200){
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            return response.toString();
+
+        }else{
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("response", con.getResponseCode());
+            jsonObject.put("message", "error");
+
+
+            return jsonObject.toString();
+
+        }
+
+
+
+    }
+
+    */
+    public static String getGetService(String url,String authenticate,String accessToken) throws IOException,JSONException {
+
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+        //add request header
+        con.setRequestMethod("GET");
+        con.setRequestProperty("Content-Type", "application/json");
+        con.setRequestProperty("Accept", "application/json");
+        con.setRequestProperty("jauthtoken", authenticate);
+        con.setRequestProperty("jaccesstoken", accessToken);
+
+        int responseCode = con.getResponseCode();
+
+        if(con.getResponseCode()==200){
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            return response.toString();
+
+        }else{
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("response", con.getResponseCode());
+            jsonObject.put("message", "error");
+
+
+            return jsonObject.toString();
+
+        }
+
+
+
+    }
+
+    public static String postWithToken(JSONObject json, String url,String authToken,String accessToken) throws IOException, NullPointerException,JSONException {
+
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+        //add request header
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-Type", "application/json");
+        con.setRequestProperty("Jauthtoken", authToken);
+        con.setRequestProperty("Jaccesstoken", accessToken);
+
+
+
+        // Send post request
+        con.setDoOutput(true);
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(json.toString());
+        wr.flush();
+        wr.close();
+
+        if (con.getResponseCode() == 200) {
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            return response.toString();
+
+        } else {
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("response", con.getResponseCode());
+            jsonObject.put("message", "error");
+
+
+            return jsonObject.toString();
+        }
+
+
+    }
+
+    public static String getWithToken(String url,String authTken,String accessToken) throws IOException,JSONException {
+
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+
+        //add request header
+        con.setRequestMethod("GET");
+        con.setRequestProperty("Content-Type", "application/json");
+        con.setRequestProperty("Accept", "application/json");
+        con.setRequestProperty("jauthtoken", authTken);
+        con.setRequestProperty("jaccesstoken", accessToken);
+
+        int responseCode = con.getResponseCode();
+
+        if(con.getResponseCode()==200){
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            return response.toString();
+
+        }else{
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("response", con.getResponseCode());
+            jsonObject.put("message", "error");
+
+
+            return jsonObject.toString();
+
+        }
+
+
+
+    }
+
+    public static String getRedirectRequest(String url) throws IOException,JSONException {
+
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+        //add request header
+        con.setRequestMethod("GET");
+        con.setRequestProperty("Content-Type", "application/json");
+
+        int responseCode = con.getResponseCode();
+
+        if(con.getResponseCode()==302){
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            return response.toString();
+
+        }else{
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("response", con.getResponseCode());
+            jsonObject.put("message", "error");
+
+
+            return jsonObject.toString();
+
+        }
+
+
+
+    }
+    public static String postAccessToken(String url,String userName,String authenticateToken) throws IOException, JSONException {
+
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+        //add request header
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+        con.setRequestProperty("jauthtoken", authenticateToken);
+
+
+        String urlParameters =
+                "username=" + URLEncoder.encode(userName, "UTF-8") +
+                        "&client_secret=" + URLEncoder.encode("test", "UTF-8") +
+                        "&scope=" + URLEncoder.encode("request", "UTF-8") +
+                        "&grant_type=" + URLEncoder.encode("authorization_code", "UTF-8") +
+                        "&redirect_uri=" + URLEncoder.encode("auth/access", "UTF-8") +
+                        "&code=" + URLEncoder.encode(authenticateToken, "UTF-8") +
+                        "&client_id=" + URLEncoder.encode("Internet-Banking-Client", "UTF-8") +
+                        "&jauthtoken=" + URLEncoder.encode(authenticateToken, "UTF-8");
+
+        // Send post request
+
+        con.setRequestProperty("Content-Length", "" +
+                Integer.toString(urlParameters.getBytes().length));
+        con.setRequestProperty("Content-Language", "en-US");
+
+        con.setDoOutput(true);
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(urlParameters);
+        wr.flush();
+        wr.close();
+
+        if (con.getResponseCode() == 200) {
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            return response.toString();
+
+        } else {
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("response", con.getResponseCode());
+            jsonObject.put("message", "error");
+
+
+            return jsonObject.toString();
+        }
+
+
+    }
+
+
+
+    public static String loginPost(JSONObject json, String url) throws IOException, JSONException {
+
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+        //add request header
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-Type", "application/json");
+        con.setRequestProperty("Accept", "application/json");
+
+        // Send post request
+        con.setDoOutput(true);
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(json.toString());
+        wr.flush();
+        wr.close();
+
+        if (con.getResponseCode() == 200) {
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            return response.toString();
+
+        } else {
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("response", con.getResponseCode());
+            jsonObject.put("message", "error");
+
+
+            return jsonObject.toString();
+        }
+
+
+    }
+
+}

@@ -1,0 +1,58 @@
+public class LoadListData extends AsyncTask<Void, Void, Void> {
+        ArrayList<Providers> providersArrayList;
+        ProvidersAdapter adapter = null;
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(Home.this);
+            pDialog.setMessage("Loading Data. Please wait...");
+            pDialog.setIndeterminate(false);
+            //pDialog.setCancelable(false);
+            pDialog.show();
+            pDialog.setCanceledOnTouchOutside(true);
+
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            adapter = new ProvidersAdapter(activity,providersArrayList);
+            list_view.setAdapter(adapter);
+            pDialog.dismiss();
+
+
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            providersArrayList=new ArrayList<>();
+            try {
+                String url = "http://findaservice.somee.com/webapi/api/account/getallproducts/";
+                JSONArray jsonArray = new JSONArray(ConnectionHelper.get(url));
+
+
+
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    Providers providers = new Providers();
+                    JSONObject jObj = (JSONObject) jsonArray.get(i);
+
+                    providers.setName(jObj.getString("fName"));
+                    providers.setAddress(jObj.getString("lName"));
+                    providers.setOther(jObj.getString("email"));
+
+                    providersArrayList.add(providers);
+
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+    }
